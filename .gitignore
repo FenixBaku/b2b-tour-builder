@@ -1,0 +1,33 @@
+# ── Sirlər və serverə xas konfiqurasiya ──
+/config.local.php
+.env
+.env.*
+
+# ── İstifadəçi faylları və yükləmə tarixçəsi (şəxsi məlumat — repoya düşməməlidir) ──
+/uploads/receipts/*
+!/uploads/receipts/.gitkeep
+/data/xlsx_uploads/*
+!/data/xlsx_uploads/.gitkeep
+/temp/
+
+# ── DB dump-ları (istifadəçi məlumatı ola bilər). Təmiz quraşdırma dump-ı: database/bb_tour_builder.sql ──
+/*.sql
+*_backup*.sql
+intbakuc_b2b*.sql
+
+# ── Loglar, keş, lokal fayllar ──
+error_log
+*.log
+__pycache__/
+*.pyc
+/tests/test_user.local.txt
+/notes
+/A1E01400
+/_tmp_*.php
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.cursor/
+
+# vendor/ repoya daxildir: paylaşılan hostinqdə composer olmaya bilər (bax README → Deploy).

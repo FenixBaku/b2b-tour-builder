@@ -1,0 +1,19 @@
+# Yüklənən qəbzlər: yalnız şəkil və PDF verilir, skript icra olunmur.
+Options -Indexes
+
+<FilesMatch ".*">
+    Require all denied
+</FilesMatch>
+<FilesMatch "(?i)\.(png|jpe?g|gif|webp|pdf)$">
+    Require all granted
+</FilesMatch>
+
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag engine off
+</IfModule>

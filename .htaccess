@@ -1,0 +1,19 @@
+# Təhlükəsizlik: daxili faylların brauzerdən yüklənməsinin qarşısı.
+# DB dump-ları, Python/SQL skriptləri, Excel mənbələri, loglar və daxili qovluqlar
+# yalnız server tərəfində istifadə olunur — URL ilə açılmamalıdır.
+
+Options -Indexes
+
+<FilesMatch "(?i)(\.(sql|py|pyc|xlsx|xls|md|log|lock|json|bat|ps1|sh|txt|ini|env|bak|yml)|^(notes|error_log|A1E01400|config(\.local)?(\.example)?\.php))$">
+    Require all denied
+</FilesMatch>
+
+# Daxili qovluqlar (migrations/run_migrations.php admin üçün açıq qalır)
+RedirectMatch 404 /(lib|tests|tools|database|migx|pyex|data|temp|sql_import|__pycache__|vendor|\.git)(/|$)
+RedirectMatch 404 /migrations/(?!run_migrations\.php$)
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
